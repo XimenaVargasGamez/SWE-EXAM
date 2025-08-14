@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { Be_Vietnam_Pro } from 'next/font/google'
+import { Be_Vietnam_Pro, Anton } from 'next/font/google'
 
 const beVietnamPro = Be_Vietnam_Pro({
   weight: ['400', '500', '700'],
