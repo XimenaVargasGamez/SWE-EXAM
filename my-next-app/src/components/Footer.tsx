@@ -22,37 +22,37 @@ const Footer = () => {
           >
             Información Adicional
           </h3>
-          <div className={`${beVietnamPro.className} ml-[100px] text-[#00092E] space-y-2 ml-24`}>
+
+          <div className={`${beVietnamPro.className} ml-[100px] text-[#00092E] space-y-2 ml-[24px]`}>
             <Link
               href="https://docs.google.com/document/d/1iGzutWpJWT2bUsWhx2ZEjZi6Y15KJhYexpIOKb4CrLs/edit?usp=sharing"
-              className="mb-[10px] block text-gray-700 hover:text-gray-900 transition-colors duration-200"
+              className="mb-[10px] block text-[#00092E] hover:text-[#0064A7] no-underline"
             >
               Link a mi CV
             </Link>
 
-            <div className="flex items-center space-x-4">
-              <span className={`${beVietnamPro.className} text-[#00092E] mt-[10px] mb-[20px]`}>
+            <Link
+              href="https://linkedin.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center space-x-4 text-[#00092E] hover:text-[#0064A7] no-underline"
+            >
+              <Image
+                src="/LinkedInIcons.png"
+                alt="LinkedIn Icon"
+                style={{ paddingBottom: '5px', paddingRight: '5px' }}
+                width={20}
+                height={20}
+                className="inline-block group-hover:brightness-75"
+              />
+              <span className={`${beVietnamPro.className} mt-[10px] mb-[20px]`}>
                 ¡Conecta Conmigo en LinkedIn!
               </span>
-              <Link
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block hover:opacity-80 transition-opacity duration-200"
-              >
-                <Image
-                  src="/LinkedInIcons.png"
-                  alt="LinkedIn Icon"
-                  width={20}
-                  height={20}
-                  className="inline-block"
-                />
-              </Link>
-            </div>
+            </Link>
           </div>
         </div>
 
-        <div className="text-[#00092E] mt-5 text-center pt-5 border-t">
+        <div className="text-[#00092E] mt-5 text-center pt-5 border-t items-center ">
           <p className={`${beVietnamPro.className} text-sm`}>
             Examen LKMX Agosto 2025
           </p>
