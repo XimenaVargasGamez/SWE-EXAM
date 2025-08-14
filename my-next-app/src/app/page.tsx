@@ -28,9 +28,9 @@ export default function MainPage() {
           priority
         />
 
-        <main className="relative z-10 flex items-center justify-center min-h-[900px] px-[24px]">
+        <main className="relative z-10 flex items-center justify-center min-h-[900px] px-[24px]"> 
           <div className="text-center text-[#FFFEFB]">
-            <h1 className="text-[70px] font-['Anton'] tracking-[4px] mb-[-30px]">
+            <h1 className="text-[70px] font-['Anton'] tracking-[4px] mb-[-30px] mt-[-200px]">
               Examen LKMX
             </h1>
 
