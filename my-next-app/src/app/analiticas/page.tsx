@@ -1,38 +1,41 @@
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
+import Image from "next/image";
+import AnalyticsTable from "@/components/AnalyticsTable";
+import { Anton } from 'next/font/google';
+
+const anton = Anton({
+  weight: '400',
+  subsets: ['latin'],
+});
 
 export default function AnaliticasPage() {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-[1100px] flex flex-col">
       <NavBar />
-      
-      <main className="flex-1 flex items-center justify-center px-6">
-        <div className="text-center">
-          <h1 className="text-4xl font-bold text-gray-900 mb-6">
-            Análisis y Reportes
+      <main className="flex-1 relative">
+        <Image
+          src="/backdrop.png"
+          alt="Background"
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="text-center relative px-6 mt-[130px]">
+          <h1 className={`${anton.className} text-[55px] text-[#FFFEFB] tracking-[4px] mb-[-20px]`}>
+            Analíticas del Sistema
           </h1>
-          <p className="text-lg text-gray-600 mb-8">
-            Visualización de datos y métricas del sistema
+          <p className={`${anton.className} text-[20px] text-[#FFFEFB] mb-[100px]`}>
+            Visualización de datos del sistema
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-            <div className="bg-blue-100 p-6 rounded-lg">
-              <h3 className="text-xl font-semibold text-blue-800 mb-2">Usuarios Activos</h3>
-              <p className="text-3xl font-bold text-blue-600">1,234</p>
-            </div>
-            <div className="bg-green-100 p-6 rounded-lg">
-              <h3 className="text-xl font-semibold text-green-800 mb-2">Sesiones Hoy</h3>
-              <p className="text-3xl font-bold text-green-600">567</p>
-            </div>
-            <div className="bg-purple-100 p-6 rounded-lg">
-              <h3 className="text-xl font-semibold text-purple-800 mb-2">Tiempo Promedio</h3>
-              <p className="text-3xl font-bold text-purple-600">12m</p>
-            </div>
-          </div>
+
+          <AnalyticsTable 
+            totalUsuarios={1234} 
+            nuevosUsuarios={56} 
+          />
         </div>
       </main>
-      
       <Footer />
     </div>
   );
 }
-
