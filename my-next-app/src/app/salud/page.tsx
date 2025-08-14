@@ -31,9 +31,9 @@ export default function SaludPage() {
             Salud del Sistema
           </h1>
           <p className={`${anton.className} text-[20px] text-[#FFFEFB] mb-[100px]`}>
-            Monitoreo y gestión del sistema de salud
+            Monitoreo de la salud del sistema
           </p>
-          <div className={`${beVietnamPro.className} text-[25px] text-[#FFFEFB] px-4 py-3`}>
+          <div className={`${beVietnamPro.className} text-[35px] text-[#FFFEFB] uppercase font-bold px-4 py-3`}>
             Sistema funcionando correctamente
           </div>
         </div>
