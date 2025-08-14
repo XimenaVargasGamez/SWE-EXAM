@@ -34,7 +34,7 @@ export default function MainPage() {
             </p>
 
             <Link href="/usuarios">
-              <button className="bg-white text-blue-600 px-[48px] py-[16px] rounded-lg text-[18px] font-semibold hover:bg-gray-100 transition-colors duration-200 shadow-lg">
+              <button className="bg-white text-blue-600 px-[48px] py-[16px] rounded-lg text-[18px] font-semibold transition-colors duration-200 shadow-lg">
                 Iniciar
               </button>
             </Link>
