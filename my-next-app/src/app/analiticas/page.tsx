@@ -1,8 +1,11 @@
+'use client';
+
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import Image from "next/image";
 import AnalyticsTable from "@/components/AnalyticsTable";
 import { Anton } from 'next/font/google';
+import { useEffect, useState } from 'react';
 
 const anton = Anton({
   weight: '400',
@@ -10,6 +13,37 @@ const anton = Anton({
 });
 
 export default function AnaliticasPage() {
+  const [totalUsuarios, setTotalUsuarios] = useState<number | string>('Cargando...');
+  const [nuevosUsuarios, setNuevosUsuarios] = useState<number | string>('Cargando...');
+
+  useEffect(() => {
+    let isMounted = true;
+
+    const fetchAnalytics = async () => {
+      try {
+        const res = await fetch('/api/analytics');
+        const data = await res.json();
+        if (!res.ok) throw new Error('Error al obtener analíticas');
+        if (isMounted) {
+          setTotalUsuarios(data.totalUsuarios);
+          setNuevosUsuarios(data.nuevosUsuarios);
+        }
+      } catch {
+        if (isMounted) {
+          setTotalUsuarios('Error');
+          setNuevosUsuarios('Error');
+        }
+      }
+    };
+
+    fetchAnalytics();
+    const interval = setInterval(fetchAnalytics, 30000);
+    return () => {
+      isMounted = false;
+      clearInterval(interval);
+    };
+  }, []);
+
   return (
     <div className="min-h-[1100px] flex flex-col">
       <NavBar />
@@ -30,8 +64,8 @@ export default function AnaliticasPage() {
           </p>
 
           <AnalyticsTable 
-            totalUsuarios={1234} 
-            nuevosUsuarios={56} 
+            totalUsuarios={totalUsuarios}
+            nuevosUsuarios={nuevosUsuarios}
           />
         </div>
       </main>
