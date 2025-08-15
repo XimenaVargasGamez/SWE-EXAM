@@ -1,44 +1,64 @@
+# Docker Compose version specification
 version: '3.8'
 
+# Define application services
 services:
+  # PostgreSQL database service
   postgres:
+    # Use PostgreSQL 15 on Alpine Linux
     image: postgres:15-alpine
+    # Set container name for easier management
     container_name: my-next-app-postgres
+    # Restart policy for container failures
     restart: unless-stopped
+    # Database configuration environment variables
     environment:
       POSTGRES_DB: mynextapp
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres123
+    # Port mapping from container to host
     ports:
       - "5432:5432"
+    # Volume mounts for data persistence and initialization
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - ./prisma/init.sql:/docker-entrypoint-initdb.d/init.sql
+    # Connect to custom network
     networks:
       - app-network
+    # Health check configuration for database readiness
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 10s
       timeout: 5s
       retries: 5
 
+  # Next.js application service
   app:
+    # Build configuration using local Dockerfile
     build:
       context: .
       dockerfile: Dockerfile
+    # Set container name for easier management
     container_name: my-next-app
+    # Restart policy for container failures
     restart: unless-stopped
+    # Port mapping from container to host
     ports:
       - "3000:3000"
+    # Application environment variables
     environment:
       NODE_ENV: production
       DATABASE_URL: postgresql://postgres:postgres123@postgres:5432/mynextapp
       DIRECT_URL: postgresql://postgres:postgres123@postgres:5432/mynextapp
+    # Service dependency configuration
     depends_on:
       postgres:
         condition: service_healthy
+    # Connect to custom network
     networks:
       - app-network
+    # Health check configuration for application readiness
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:3000/api/health"]
       interval: 30s

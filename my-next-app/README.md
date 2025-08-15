@@ -14,6 +14,10 @@ Design Tools
 - Figma (https://www.figma.com/design/QI76Urfa8vo4vcfwkJD1Xx/Examen-LKMX?node-id=0-1&t=5SmTF0Ij5FxwkIwT-1)
 
 
+*NOTE*
+The comments made throught the files were generated with Claude AI
+
+
 **Project Requirements**
 
 1. Project:

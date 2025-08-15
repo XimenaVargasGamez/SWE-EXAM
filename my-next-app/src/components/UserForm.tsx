@@ -2,7 +2,6 @@
 
 import { useState, FormEvent } from 'react';
 import { UserService } from '@/services/userService';
-import { CreateUserRequest } from '@/types/user';
 import { Be_Vietnam_Pro, Anton } from 'next/font/google';
 
 const beVietnamPro = Be_Vietnam_Pro({
