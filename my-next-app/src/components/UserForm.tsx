@@ -1,15 +1,19 @@
 'use client';
 
 import { useState, FormEvent } from 'react';
-import { Be_Vietnam_Pro } from 'next/font/google';
 import { UserService } from '@/services/userService';
 import { CreateUserRequest } from '@/types/user';
+import { Be_Vietnam_Pro, Anton } from 'next/font/google';
 
 const beVietnamPro = Be_Vietnam_Pro({
   weight: ['400', '500', '700'],
   subsets: ['latin'],
 });
 
+const anton = Anton({
+  weight: '400',
+  subsets: ['latin'],
+});
 interface UserFormProps {
   onSubmit: (username: string, email: string) => void;
 }
@@ -60,18 +64,20 @@ export default function UserForm({ onSubmit }: UserFormProps) {
   };
 
   return (
-    <div className="bg-white rounded-[13px] shadow-lg p-[40px] max-w-[500px] w-full">
+    <div className="text-[#FFFEFB] shadow-lg mt-[-50px] max-w-[500px] w-full">
       <form onSubmit={handleSubmit} className="space-y-[30px]">
+        {/* error */}
         {error && (
-          <div className="bg-red-50 border border-red-200 rounded-[10px] p-[15px]">
-            <p className={`${beVietnamPro.className} text-red-600 text-[15px] text-center`}>
+          <div className="text-[#FFFEFB] text-[15px] rounded-[10px]">
+            <p className={`${anton.className} text-[#FFFEFB] text-[15px] text-center`}>
               {error}
             </p>
           </div>
         )}
-        {success && (
-          <div className="bg-green-50 border border-green-200 rounded-[10px] p-[15px]">
-            <p className={`${beVietnamPro.className} text-green-600 text-[15px] text-center`}>
+        {/* success */}
+        {true && (
+          <div className="text-[#FFFEFB] text-[15px] rounded-[10px]">
+            <p className={`${anton.className} text-[#FFFEFB] text-[15px] text-center`}>
               {success}
             </p>
           </div>
