@@ -1,16 +1,11 @@
 import React from "react";
 import { Be_Vietnam_Pro } from 'next/font/google';
+import type { User } from "@/types/user";
 
 const beVietnamPro = Be_Vietnam_Pro({
   weight: ['400', '500', '700'],
   subsets: ['latin'],
 });
-
-interface User {
-  id: number;
-  username: string;
-  email: string;
-}
 
 interface UserTableProps {
   users: User[];
@@ -63,7 +58,6 @@ export default function UserTable({ users }: UserTableProps) {
           )}
         </tbody>
       </table>
-      
       <div className="text-center mt-[30px]">
         <p className={`${beVietnamPro.className} text-[#FFFEFB] text-[15px]`}>
           Total de Usuarios Registrados: {users.length}
