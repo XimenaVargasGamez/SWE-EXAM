@@ -1,16 +1,62 @@
 # Software Engineer Test | Ximena Vargas Gámez | 2025
 
 **About the Project**
-This is a Next.js application built for the LKMX Software Engineer recruitment test, demonstrating web development practices, and database integration. For the development of it, the following stack was used: 
+This is a Next.js application built for the LKMX Software Engineer recruitment test, demonstrating web development practices, and database integration. For the development of it, the following stack was used:
 
 - Next.js
 - Tailwind CSS
 - PostgreSQL
-    Supabase
+  Supabase
 - Prisma
 - Docker
 
+Design Tools
+- Figma
+
+
+**Project Requirements**
+
+1. Project:
+   - Next.js + TypeScript
+   - Separate structure
+2. Docker
+   - Dockerfile for the app
+   - docker-compose with:
+     Next.js app
+     PostgreSQL database
+3. Endpoints
+   - GET /api/health (status check)
+   - GET /api/users and POST /api/users (PostgreSQL connection)
+   - GET /api/analytics (additional business logic)
+4. Interface
+   - Page displaying a list of users
+   - Form to create/update users
+   - Styling with Tailwind or another library (optional)
+
+
+**Project Requirement Validation**
+
+**1. Project Structure - COMPLETED**
+    - Next.js + TypeScript implemented in `src/` directory
+    - Organized structure: components, services, types, lib, and app folders
+
+**2. Docker - COMPLETED**
+    - Dockerfile with production optimizations
+    - docker-compose.yml with Next.js app and PostgreSQL database
+
+**3. Endpoints - COMPLETED**
+    - `/api/health` - System health check
+    - `/api/users` - User CRUD operations with PostgreSQL
+    - `/api/analytics` - Business logic and data aggregation
+
+**4. Interface - COMPLETED**
+    - User list page (`/usuarios/list`)
+    - User registration form (`/usuarios/register`)
+    - Full Tailwind CSS styling throughout
+
+
 **Project Structure**
+
 ```
 my-next-app/
 ├── src/
@@ -32,23 +78,27 @@ my-next-app/
 └── README.md                  # This file
 ```
 
-**Steps to Opening**
-1. Clone repository with:
-    git clone https://github.com/XimenaVargasGamez/SWE-EXAM.git 
-    cd my-next-app
 
-2. If necesary modify environment variables. 
+**Steps to Opening**
+
+1. Clone repository with:
+   git clone https://github.com/XimenaVargasGamez/SWE-EXAM.git
+   cd my-next-app
+
+2. If necesary modify environment variables.
 
 3. In your terminal run the following command: docker-compose up -d
-    (If you can’t find your terminal do: 
-        [for Windows] Ctrl + `
-        [for Mac] Cmd + J)
+   (If you can’t find your terminal do:
+   [for Windows] Ctrl + `
+   [for Mac] Cmd + J)
 
-4. This command builds images for both the database and the application, 
+4. This command builds images for both the database and the application,
 
 5. Access the app through: localhost:3000
 
+
 **Future Improvements**
+
 - Security: Current, the project lacks any security mechanisms, implementing appropriate measures, such as authentication and authorization, would significantly impact the system.
 
 - Performance Optimization: The application currently exhibits slow execution, therefore applying performance optimization techniques would improve responsiveness and overall user experience.
