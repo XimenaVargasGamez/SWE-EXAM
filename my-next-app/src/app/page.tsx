@@ -18,7 +18,6 @@ export default function MainPage() {
   return (
     <div className="min-h-[1150px] flex flex-col"> 
       <NavBar />
-
       <div className="flex-1 relative">
         <Image
           src="/backdrop.png"
@@ -32,11 +31,9 @@ export default function MainPage() {
             <h1 className="text-[70px] font-['Anton'] tracking-[4px] mb-[-30px] mt-[-200px]">
               Examen LKMX
             </h1>
-
             <p className="text-[20px] font-['Anton'] tracking-[4px] mb-[100px] md:text-[50px] uppercase ">
               XIMENA VARGAS GÁMEZ
             </p>
-
             <Link href="/usuarios">
               <button
                 className={`${beVietnamPro.className} text-[20px] text-[#0071BD] bg-[#FDFBFF] border-none px-[105px] py-[15px] rounded-[13px] shadow-[500px] transition-transform duration-200 hover:scale-105`}
@@ -47,7 +44,6 @@ export default function MainPage() {
           </div>
         </main>
       </div>
-
       <Footer />
     </div>
   );

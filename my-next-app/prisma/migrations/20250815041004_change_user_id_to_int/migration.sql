@@ -1,0 +1,4 @@
+ALTER TABLE "public"."User" DROP CONSTRAINT "User_pkey",
+DROP COLUMN "id",
+ADD COLUMN     "id" SERIAL NOT NULL,
+ADD CONSTRAINT "User_pkey" PRIMARY KEY ("id");
