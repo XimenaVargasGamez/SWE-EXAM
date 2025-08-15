@@ -47,8 +47,7 @@ function ServerHealth() {
     };
 
     checkHealth();
-    
-    // Revisa la salud cada 60 seg
+
     const interval = setInterval(checkHealth, 60000);
     return () => clearInterval(interval);
   }, []);

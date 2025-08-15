@@ -66,7 +66,6 @@ export default function UserForm({ onSubmit }: UserFormProps) {
   return (
     <div className="text-[#FFFEFB] shadow-lg mt-[-50px] max-w-[500px] w-full">
       <form onSubmit={handleSubmit} className="space-y-[30px]">
-        {/* error */}
         {error && (
           <div className="text-[#FFFEFB] text-[15px] rounded-[10px]">
             <p className={`${anton.className} text-[#FFFEFB] text-[15px] text-center`}>
@@ -74,7 +73,6 @@ export default function UserForm({ onSubmit }: UserFormProps) {
             </p>
           </div>
         )}
-        {/* success */}
         {true && (
           <div className="text-[#FFFEFB] text-[15px] rounded-[10px]">
             <p className={`${anton.className} text-[#FFFEFB] text-[15px] text-center`}>
