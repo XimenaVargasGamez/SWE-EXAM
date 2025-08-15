@@ -1,0 +1,106 @@
+import { NextRequest, NextResponse } from 'next/server';
+import { prisma } from '@/lib/db';
+import { CreateUserRequest, CreateUserResponse } from '@/types/user';
+
+export async function POST(request: NextRequest): Promise<NextResponse<CreateUserResponse>> {
+  try {
+    const body: CreateUserRequest = await request.json();
+    if (!body.email || !body.username) {
+      return NextResponse.json(
+        { success: false, error: 'Email and username are required' },
+        { status: 400 }
+      );
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(body.email)) {
+      return NextResponse.json(
+        { success: false, error: 'Invalid email format' },
+        { status: 400 }
+      );
+    }
+    if (body.username.trim().length < 3) {
+      return NextResponse.json(
+        { success: false, error: 'Username must be at least 3 characters long' },
+        { status: 400 }
+      );
+    }
+    const existingUser = await prisma.user.findFirst({
+      where: {
+        OR: [
+          { email: body.email },
+          { username: body.username }
+        ]
+      }
+    });
+
+    if (existingUser) {
+      if (existingUser.email === body.email) {
+        return NextResponse.json(
+          { success: false, error: 'Email already registered' },
+          { status: 409 }
+        );
+      }
+      if (existingUser.username === body.username) {
+        return NextResponse.json(
+          { success: false, error: 'Username already taken' },
+          { status: 409 }
+        );
+      }
+    }
+    const newUser = await prisma.user.create({
+      data: {
+        email: body.email.trim().toLowerCase(),
+        username: body.username.trim(),
+      },
+    });
+
+    return NextResponse.json({
+      success: true,
+      user: {
+        id: newUser.id,
+        email: newUser.email,
+        username: newUser.username,
+        createdAt: newUser.createdAt,
+      }
+    }, { status: 201 });
+
+  } catch (error) {
+    console.error('Error creating user:', error);
+    
+    if (error instanceof Error && error.message.includes('Unique constraint')) {
+      return NextResponse.json(
+        { success: false, error: 'User with this email or username already exists' },
+        { status: 409 }
+      );
+    }
+
+    return NextResponse.json(
+      { success: false, error: 'Internal server error' },
+      { status: 500 }
+    );
+  }
+}
+export async function GET(): Promise<NextResponse> {
+  try {
+    const users = await prisma.user.findMany({
+      orderBy: {
+        createdAt: 'desc'
+      }
+    });
+    return NextResponse.json({
+      success: true,
+      users: users.map(user => ({
+        id: user.id,
+        email: user.email,
+        username: user.username,
+        createdAt: user.createdAt,
+      }))
+    });
+  } catch (error) {
+    console.error('Error fetching users:', error);
+    return NextResponse.json(
+      { success: false, error: 'Internal server error' },
+      { status: 500 }
+    );
+  }
+}

@@ -1,6 +1,5 @@
 'use client';
 
-import { useState } from 'react';
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import UserForm from "@/components/UserForm";
@@ -13,13 +12,9 @@ const anton = Anton({
 });
 
 export default function UserRegisterPage() {
-  const [users, setUsers] = useState<{ username: string; email: string }[]>([]);
-
   const handleUserSubmit = (username: string, email: string) => {
-    setUsers((prev) => [...prev, { username, email }]);
-    alert(`Usuario registrado exitosamente: ${username}`);
+    console.log(`User registered successfully: ${username} (${email})`);
   };
-
   return (
     <div className="min-h-[1100px] flex flex-col">
       <NavBar />
@@ -31,14 +26,12 @@ export default function UserRegisterPage() {
           className="object-cover object-center"
           priority
         />
-
         <main className="relative z-10 flex flex-col items-center justify-center px-[24px] py-[50px] pt-[100px] max-h-[1100px] overflow-y-auto">
           <h1
             className={`${anton.className} text-[50px] text-[#FFFEFB] tracking-[4px] mb-[50px] text-center`}
           >
             Registrar Usuario
           </h1>
-
           <UserForm onSubmit={handleUserSubmit} />
         </main>
       </div>

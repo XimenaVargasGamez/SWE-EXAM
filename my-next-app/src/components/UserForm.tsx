@@ -2,6 +2,8 @@
 
 import { useState, FormEvent } from 'react';
 import { Be_Vietnam_Pro } from 'next/font/google';
+import { UserService } from '@/services/userService';
+import { CreateUserRequest } from '@/types/user';
 
 const beVietnamPro = Be_Vietnam_Pro({
   weight: ['400', '500', '700'],
@@ -15,22 +17,65 @@ interface UserFormProps {
 export default function UserForm({ onSubmit }: UserFormProps) {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState<string | null>(null);
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    setError(null);
+    setSuccess(null);
 
     const trimmedUsername = username.trim();
     const trimmedEmail = email.trim();
-    if (!trimmedUsername || !trimmedEmail) return;
+    
+    if (!trimmedUsername || !trimmedEmail) {
+      setError('Por favor complete todos los campos');
+      return;
+    }
 
-    onSubmit(trimmedUsername, trimmedEmail);
-    setUsername('');
-    setEmail('');
+    setIsLoading(true);
+
+    try {
+      const result = await UserService.createUser({
+        username: trimmedUsername,
+        email: trimmedEmail
+      });
+
+      if (result.success && result.user) {
+        setSuccess(`¡Usuario ${trimmedUsername} registrado exitosamente!`);
+        onSubmit(trimmedUsername, trimmedEmail);
+        setUsername('');
+        setEmail('');
+        
+        setTimeout(() => setSuccess(null), 3000);
+      } else {
+        setError(result.error || 'Error al registrar usuario');
+      }
+    } catch (err) {
+      setError('Error de conexión. Por favor intente nuevamente.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
     <div className="bg-white rounded-[13px] shadow-lg p-[40px] max-w-[500px] w-full">
       <form onSubmit={handleSubmit} className="space-y-[30px]">
+        {error && (
+          <div className="bg-red-50 border border-red-200 rounded-[10px] p-[15px]">
+            <p className={`${beVietnamPro.className} text-red-600 text-[15px] text-center`}>
+              {error}
+            </p>
+          </div>
+        )}
+        {success && (
+          <div className="bg-green-50 border border-green-200 rounded-[10px] p-[15px]">
+            <p className={`${beVietnamPro.className} text-green-600 text-[15px] text-center`}>
+              {success}
+            </p>
+          </div>
+        )}
         <div>
           <label
             htmlFor="username"
@@ -46,6 +91,7 @@ export default function UserForm({ onSubmit }: UserFormProps) {
             className="w-full px-[20px] py-[15px] border border-[#00092E] rounded-[15px] text-[15px] focus:outline-none focus:ring-2 focus:ring-[#00092E] focus:border-transparent"
             placeholder="Ingrese nombre de usuario"
             required
+            disabled={isLoading}
           />
         </div>
         <div>
@@ -63,14 +109,16 @@ export default function UserForm({ onSubmit }: UserFormProps) {
             className="w-full px-[20px] py-[15px] border border-[#00092E] rounded-[15px] text-[15px] focus:outline-none focus:ring-2 focus:ring-[#00092E] focus:border-transparent"
             placeholder="Ingrese correo electrónico"
             required
+            disabled={isLoading}
           />
         </div>
         <div className="text-center">
           <button
             type="submit"
-            className={`${beVietnamPro.className} text-[20px] text-[#0071BD] bg-[#FDFBFF] border-none px-[70px] py-[15px] ml-[10px] rounded-[13px] shadow-[500px] transition-transform duration-200 hover:scale-105`}
+            disabled={isLoading}
+            className={`${beVietnamPro.className} text-[20px] text-[#0071BD] bg-[#FDFBFF] border-none px-[70px] py-[15px] ml-[10px] rounded-[13px] shadow-[500px] transition-all duration-200 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none`}
           >
-            ¡Registrar!
+            {isLoading ? 'Registrando...' : '¡Registrar!'}
           </button>
         </div>
         <div className="text-center">
