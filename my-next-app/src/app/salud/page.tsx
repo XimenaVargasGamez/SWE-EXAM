@@ -22,7 +22,7 @@ interface HealthData {
   message: string;
 }
 
-// Component that handles server health checking logic
+// Component that handles server health checking logic with polling
 function ServerHealth() {
   // State variables for managing component data and UI states
   const [healthData, setHealthData] = useState<HealthData | null>(null);
@@ -61,6 +61,7 @@ function ServerHealth() {
 
     // Set up polling every 60 seconds
     const interval = setInterval(checkHealth, 60000);
+    
     // Cleanup interval on component unmount
     return () => clearInterval(interval);
   }, []);
