@@ -48,7 +48,7 @@ The comments made throught the files were generated with Claude AI
 
 **2. Docker - COMPLETED**
     - Dockerfile with production optimizations
-    - docker-compose.yml with Next.js app and PostgreSQL database
+    - docker-compose.yml with Next.js app
 
 **3. Endpoints - COMPLETED**
     - `/api/health` - System health check
