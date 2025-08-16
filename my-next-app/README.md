@@ -10,6 +10,9 @@ This is a Next.js application built for the LKMX Software Engineer recruitment t
 - Prisma
 - Docker
 
+Deployment
+- Google Cloud
+
 Design Tools
 - Figma (https://www.figma.com/design/QI76Urfa8vo4vcfwkJD1Xx/Examen-LKMX?node-id=0-1&t=5SmTF0Ij5FxwkIwT-1)
 
@@ -96,7 +99,7 @@ my-next-app/
    [for Windows] Ctrl + `
    [for Mac] Cmd + J)
 
-4. This command builds images for both the database and the application,
+4. This command builds images for the application,
 
 5. Access the app through: localhost:3000
 
