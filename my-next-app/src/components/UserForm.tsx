@@ -13,6 +13,7 @@ const anton = Anton({
   weight: '400',
   subsets: ['latin'],
 });
+
 interface UserFormProps {
   onSubmit: (username: string, email: string) => void;
 }
@@ -34,6 +35,26 @@ export default function UserForm({ onSubmit }: UserFormProps) {
     
     if (!trimmedUsername || !trimmedEmail) {
       setError('Por favor complete todos los campos');
+      return;
+    }
+
+    // Username validation (5-35 characters)
+    if (trimmedUsername.length < 5) {
+      setError('El nombre de usuario debe tener al menos 5 caracteres');
+      return;
+    }
+    if (trimmedUsername.length > 35) {
+      setError('El nombre de usuario no puede exceder 35 caracteres');
+      return;
+    }
+
+    // Email validation (10-35 characters)
+    if (trimmedEmail.length < 10) {
+      setError('El correo electrónico debe tener al menos 10 caracteres');
+      return;
+    }
+    if (trimmedEmail.length > 35) {
+      setError('El correo electrónico no puede exceder 35 caracteres');
       return;
     }
 
@@ -72,7 +93,7 @@ export default function UserForm({ onSubmit }: UserFormProps) {
             </p>
           </div>
         )}
-        {true && (
+        {success && (
           <div className="text-[#FFFEFB] text-[15px] rounded-[10px]">
             <p className={`${anton.className} text-[#FFFEFB] text-[15px] text-center`}>
               {success}
@@ -92,10 +113,15 @@ export default function UserForm({ onSubmit }: UserFormProps) {
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             className="w-full px-[20px] py-[15px] border border-[#00092E] rounded-[15px] text-[15px] focus:outline-none focus:ring-2 focus:ring-[#00092E] focus:border-transparent"
-            placeholder="Ingrese nombre de usuario"
+            placeholder="Ingrese nombre de usuario (5-35 caracteres)"
             required
             disabled={isLoading}
+            minLength={5}
+            maxLength={35}
           />
+          <p className={`${beVietnamPro.className} text-[#FFFEFB] text-[12px] mt-[5px] opacity-70`}>
+            {username.length}/35 caracteres
+          </p>
         </div>
         <div>
           <label
@@ -110,10 +136,15 @@ export default function UserForm({ onSubmit }: UserFormProps) {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             className="w-full px-[20px] py-[15px] border border-[#00092E] rounded-[15px] text-[15px] focus:outline-none focus:ring-2 focus:ring-[#00092E] focus:border-transparent"
-            placeholder="Ingrese correo electrónico"
+            placeholder="Ingrese correo electrónico (10-35 caracteres)"
             required
             disabled={isLoading}
+            minLength={10}
+            maxLength={35}
           />
+          <p className={`${beVietnamPro.className} text-[#FFFEFB] text-[12px] mt-[5px] opacity-70`}>
+            {email.length}/35 caracteres
+          </p>
         </div>
         <div className="text-center">
           <button
