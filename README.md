@@ -11,7 +11,7 @@ This is a Next.js application built for the LKMX Software Engineer recruitment t
 - Docker
 
 Deployment
-- Google Cloud
+- Google Cloud: https://mynextapp-36092050574.us-west1.run.app
 
 Design Tools
 - Figma (https://www.figma.com/design/QI76Urfa8vo4vcfwkJD1Xx/Examen-LKMX?node-id=0-1&t=5SmTF0Ij5FxwkIwT-1)
