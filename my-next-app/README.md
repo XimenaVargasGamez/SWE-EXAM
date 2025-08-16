@@ -5,8 +5,7 @@ This is a Next.js application built for the LKMX Software Engineer recruitment t
 
 - Next.js
 - Tailwind CSS
-- PostgreSQL
-  Supabase
+- Supabase
 - Prisma
 - Docker
 
@@ -30,10 +29,10 @@ The comments made throught the files were generated with Claude AI
    - Dockerfile for the app
    - docker-compose with:
      Next.js app
-     PostgreSQL database
+     
 3. Endpoints
    - GET /api/health (status check)
-   - GET /api/users and POST /api/users (PostgreSQL connection)
+   - GET /api/users and POST /api/users 
    - GET /api/analytics (additional business logic)
 4. Interface
    - Page displaying a list of users
@@ -49,11 +48,11 @@ The comments made throught the files were generated with Claude AI
 
 **2. Docker - COMPLETED**
     - Dockerfile with production optimizations
-    - docker-compose.yml with Next.js app and PostgreSQL database
+    - docker-compose.yml with Next.js app
 
 **3. Endpoints - COMPLETED**
     - `/api/health` - System health check
-    - `/api/users` - User CRUD operations with PostgreSQL
+    - `/api/users` - User CRUD operations 
     - `/api/analytics` - Business logic and data aggregation
 
 **4. Interface - COMPLETED**
@@ -99,7 +98,7 @@ my-next-app/
    [for Windows] Ctrl + `
    [for Mac] Cmd + J)
 
-4. This command builds images for the application,
+4. This command builds the image for the application
 
 5. Access the app through: localhost:3000
 
