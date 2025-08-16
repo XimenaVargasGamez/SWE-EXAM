@@ -5,13 +5,12 @@ This is a Next.js application built for the LKMX Software Engineer recruitment t
 
 - Next.js
 - Tailwind CSS
-- PostgreSQL
-  Supabase
+- Supabase
 - Prisma
 - Docker
 
 Deployment
-- Google Cloud: https://mynextapp-36092050574.us-west1.run.app
+- Google Cloud
 
 Design Tools
 - Figma (https://www.figma.com/design/QI76Urfa8vo4vcfwkJD1Xx/Examen-LKMX?node-id=0-1&t=5SmTF0Ij5FxwkIwT-1)
@@ -99,7 +98,7 @@ my-next-app/
    [for Windows] Ctrl + `
    [for Mac] Cmd + J)
 
-4. This command builds images for the application,
+4. This command builds the image for the application
 
 5. Access the app through: localhost:3000
 
