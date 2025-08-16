@@ -29,10 +29,10 @@ The comments made throught the files were generated with Claude AI
    - Dockerfile for the app
    - docker-compose with:
      Next.js app
-     PostgreSQL database
+     
 3. Endpoints
    - GET /api/health (status check)
-   - GET /api/users and POST /api/users (PostgreSQL connection)
+   - GET /api/users and POST /api/users 
    - GET /api/analytics (additional business logic)
 4. Interface
    - Page displaying a list of users
@@ -52,7 +52,7 @@ The comments made throught the files were generated with Claude AI
 
 **3. Endpoints - COMPLETED**
     - `/api/health` - System health check
-    - `/api/users` - User CRUD operations with PostgreSQL
+    - `/api/users` - User CRUD operations 
     - `/api/analytics` - Business logic and data aggregation
 
 **4. Interface - COMPLETED**
