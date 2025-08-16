@@ -22,7 +22,7 @@ interface HealthData {
   message: string;
 }
 
-// Component that handles server health checking logic with polling
+// Component that handles server health checking logic
 function ServerHealth() {
   // State variables for managing component data and UI states
   const [healthData, setHealthData] = useState<HealthData | null>(null);
@@ -61,7 +61,6 @@ function ServerHealth() {
 
     // Set up polling every 60 seconds
     const interval = setInterval(checkHealth, 60000);
-    
     // Cleanup interval on component unmount
     return () => clearInterval(interval);
   }, []);
@@ -123,9 +122,9 @@ export default function SaludPage() {
           priority
         />
         {/* Content overlay with page title and health component */}
-        <div className="text-center relative px-6 pt-[100px] pb-[50px]">
+        <div className="text-center relative px-6 pt-[90px] pb-[50px]">
           {/* Page title */}
-          <h1 className={`${anton.className} text-[55px] text-[#FFFEFB] tracking-[4px] mb-[-20px]`}>
+          <h1 className={`${anton.className} text-[55px] text-[#FFFEFB] tracking-[4px] mb-[-35px]`}>
             Salud del Sistema
           </h1>
           {/* Page subtitle */}
