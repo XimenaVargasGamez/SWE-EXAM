@@ -113,7 +113,7 @@ export default function UserForm({ onSubmit }: UserFormProps) {
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             className="w-full px-[20px] py-[15px] border border-[#00092E] rounded-[15px] text-[15px] focus:outline-none focus:ring-2 focus:ring-[#00092E] focus:border-transparent"
-            placeholder="Ingrese nombre de usuario (5-35 caracteres)"
+            placeholder="Ingrese nombre de usuario"
             required
             disabled={isLoading}
             minLength={5}
@@ -136,7 +136,7 @@ export default function UserForm({ onSubmit }: UserFormProps) {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             className="w-full px-[20px] py-[15px] border border-[#00092E] rounded-[15px] text-[15px] focus:outline-none focus:ring-2 focus:ring-[#00092E] focus:border-transparent"
-            placeholder="Ingrese correo electrónico (10-35 caracteres)"
+            placeholder="Ingrese correo electrónico"
             required
             disabled={isLoading}
             minLength={10}
