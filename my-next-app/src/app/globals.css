@@ -1,6 +1,4 @@
 /* Import Tailwind CSS base styles, components, and utilities */
-@tailwind base;
-@tailwind components;
 @tailwind utilities;
 
 /* Define CSS custom properties for light theme colors */
@@ -8,6 +6,14 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+}
+
+@theme {
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
 }
 
 /* Override color variables for dark theme when user prefers dark mode */
