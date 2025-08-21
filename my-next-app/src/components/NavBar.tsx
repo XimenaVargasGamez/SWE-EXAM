@@ -26,22 +26,23 @@ const NavBar = () => {
 
   return (
     // Navigation container with styling
-    <nav className={`${beVietnamPro.className} bg-[#FFFEFB] px-[6px] py-[4px] shadow-lg`}>
+    <nav className={`${beVietnamPro.className} bg-[#FFFEFB] px-[4px] md:px-[6px] py-[3px] md:py-[4px] shadow-lg`}>
       {/* Navigation content wrapper */}
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Logo section with home link */}
         <Link href="/" className="flex items-center">
           <Image
             src="/Logo.png"
-            style={{ padding: '15px' }}
-            width={110}
-            height={45}
+            style={{ padding: '8px' }}
+            width={70}
+            height={28}
+            className="md:w-[110px] md:h-[45px]"
             alt="Logo"
           />
         </Link>
 
       {/* Navigation links section */}
-      <div className="flex flex-row space-x-6">
+      <div className="flex flex-row space-x-2 md:space-x-6">
         {/* Map through navigation items */}
         {navItems.map((item) => {
           // Check if current item is active
@@ -51,7 +52,7 @@ const NavBar = () => {
             <Link
               key={item.label}
               href={item.href}
-              className={`px-[15px] py-[2px] mr-[10px] font-medium transition-all duration-200 text-center no-underline
+              className={`px-[8px] md:px-[15px] py-[2px] mr-[5px] md:mr-[10px] text-[12px] md:text-[16px] font-medium transition-all duration-200 text-center no-underline
                 ${isActive
                   ? 'border-b-2 border-[#00092E] text-[#00092E]'
                   : 'text-[#00092E] hover:text-[#0490E0] rounded-md'}
