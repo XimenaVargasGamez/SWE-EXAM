@@ -70,8 +70,8 @@ export default function AnaliticasPage() {
   }, []);
 
   return (
-    // Main page container with minimum height
-    <div className="min-h-[1100px] flex flex-col">
+    // Main page container with minimum height - fixed for mobile gap
+    <div className="min-h-screen md:min-h-[1100px] flex flex-col">
       <NavBar />
       {/* Main content area with flex-grow */}
       <main className="flex-1 relative">
@@ -80,25 +80,28 @@ export default function AnaliticasPage() {
           src="/backdrop.png"
           alt="Background"
           fill
-          className="object-cover"
+          className="object-cover object-center md:object-cover"
+          style={{
+            objectPosition: 'center center'
+          }}
           priority
           sizes="100vw"
         />
         {/* Content overlay */}
-        <div className="text-center relative px-6 mt-[130px] z-10">
+        <div className="text-center relative px-6 mt-[70px] md:mt-[130px] z-10">
           {/* Page title */}
-          <h1 className={`${anton.className} text-[55px] text-[#FFFEFB] tracking-[4px] mb-[-20px]`}>
+          <h1 className={`${anton.className} text-[28px] md:text-[55px] text-[#FFFEFB] tracking-[2px] md:tracking-[4px] mb-[-10px] md:mb-[-20px]`}>
             Analíticas del Sistema
           </h1>
           {/* Page description */}
-          <p className={`${anton.className} text-[20px] text-[#FFFEFB] mb-[100px]`}>
+          <p className={`${anton.className} text-[12px] md:text-[20px] text-[#FFFEFB] mb-[50px] md:mb-[100px]`}>
             Visualización de datos del sistema
           </p>
 
           {/* Loading state */}
           {isLoading ? (
             <div className="flex justify-center items-center">
-              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white"></div>
+              <div className="animate-spin rounded-full h-8 w-8 md:h-12 md:w-12 border-b-2 border-white"></div>
             </div>
           ) : (
             /* Analytics table component with data props */
