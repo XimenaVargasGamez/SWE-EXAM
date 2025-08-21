@@ -84,18 +84,18 @@ export default function UserForm({ onSubmit }: UserFormProps) {
   };
 
   return (
-    <div className="text-[#FFFEFB] shadow-lg mt-[-50px] max-w-[500px] w-full">
-      <form onSubmit={handleSubmit} className="space-y-[30px]">
+    <div className="text-[#FFFEFB] shadow-lg mt-[-20px] md:mt-[-50px] max-w-[320px] md:max-w-[500px] w-full px-[10px] md:px-0">
+      <form onSubmit={handleSubmit} className="space-y-[20px] md:space-y-[30px]">
         {error && (
-          <div className="text-[#FFFEFB] text-[15px] rounded-[10px]">
-            <p className={`${anton.className} text-[#FFFEFB] text-[15px] text-center`}>
+          <div className="text-[#FFFEFB] text-[12px] md:text-[15px] rounded-[8px] md:rounded-[10px]">
+            <p className={`${anton.className} text-[#FFFEFB] text-[12px] md:text-[15px] text-center`}>
               {error}
             </p>
           </div>
         )}
         {success && (
-          <div className="text-[#FFFEFB] text-[15px] rounded-[10px]">
-            <p className={`${anton.className} text-[#FFFEFB] text-[15px] text-center`}>
+          <div className="text-[#FFFEFB] text-[12px] md:text-[15px] rounded-[8px] md:rounded-[10px]">
+            <p className={`${anton.className} text-[#FFFEFB] text-[12px] md:text-[15px] text-center`}>
               {success}
             </p>
           </div>
@@ -103,7 +103,7 @@ export default function UserForm({ onSubmit }: UserFormProps) {
         <div>
           <label
             htmlFor="username"
-            className={`${beVietnamPro.className} block text-[#FFFEFB] text-[20px] mb-[15px]`}
+            className={`${beVietnamPro.className} block text-[#FFFEFB] text-[16px] md:text-[20px] mb-[10px] md:mb-[15px]`}
           >
             Usuario*
           </label>
@@ -112,21 +112,21 @@ export default function UserForm({ onSubmit }: UserFormProps) {
             id="username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            className="w-full px-[20px] py-[15px] border border-[#00092E] rounded-[15px] text-[15px] focus:outline-none focus:ring-2 focus:ring-[#00092E] focus:border-transparent"
+            className="w-full px-[10px] md:px-[20px] py-[10px] md:py-[15px] border border-[#00092E] rounded-[8px] md:rounded-[15px] text-[12px] md:text-[15px] focus:outline-none focus:ring-2 focus:ring-[#00092E] focus:border-transparent"
             placeholder="Ingrese nombre de usuario"
             required
             disabled={isLoading}
             minLength={5}
             maxLength={35}
           />
-          <p className={`${beVietnamPro.className} text-[#FFFEFB] text-[12px] mt-[5px] opacity-70`}>
+          <p className={`${beVietnamPro.className} text-[#FFFEFB] text-[10px] md:text-[12px] mt-[4px] md:mt-[5px] opacity-70`}>
             {username.length}/35 caracteres
           </p>
         </div>
         <div>
           <label
             htmlFor="email"
-            className={`${beVietnamPro.className} block text-[#FFFEFB] text-[20px] mb-[15px]`}
+            className={`${beVietnamPro.className} block text-[#FFFEFB] text-[16px] md:text-[20px] mb-[10px] md:mb-[15px]`}
           >
             Correo Electrónico*
           </label>
@@ -135,14 +135,14 @@ export default function UserForm({ onSubmit }: UserFormProps) {
             id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full px-[20px] py-[15px] border border-[#00092E] rounded-[15px] text-[15px] focus:outline-none focus:ring-2 focus:ring-[#00092E] focus:border-transparent"
+            className="w-full px-[10px] md:px-[20px] py-[10px] md:py-[15px] border border-[#00092E] rounded-[8px] md:rounded-[15px] text-[12px] md:text-[15px] focus:outline-none focus:ring-2 focus:ring-[#00092E] focus:border-transparent"
             placeholder="Ingrese correo electrónico"
             required
             disabled={isLoading}
             minLength={10}
             maxLength={35}
           />
-          <p className={`${beVietnamPro.className} text-[#FFFEFB] text-[12px] mt-[5px] opacity-70`}>
+          <p className={`${beVietnamPro.className} text-[#FFFEFB] text-[10px] md:text-[12px] mt-[4px] md:mt-[5px] opacity-70`}>
             {email.length}/35 caracteres
           </p>
         </div>
@@ -150,13 +150,13 @@ export default function UserForm({ onSubmit }: UserFormProps) {
           <button
             type="submit"
             disabled={isLoading}
-            className={`${beVietnamPro.className} text-[20px] text-[#0071BD] bg-[#FDFBFF] border-none px-[70px] py-[15px] ml-[10px] rounded-[13px] shadow-[500px] transition-all duration-200 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none`}
+            className={`${beVietnamPro.className} text-[14px] md:text-[20px] text-[#0071BD] bg-[#FDFBFF] border-none px-[30px] md:px-[70px] py-[10px] md:py-[15px] ml-[5px] md:ml-[10px] rounded-[8px] md:rounded-[13px] shadow-[500px] transition-all duration-200 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none`}
           >
             {isLoading ? 'Registrando...' : '¡Registrar!'}
           </button>
         </div>
         <div className="text-center">
-          <p className={`${beVietnamPro.className} text-[#FFFEFB] text-[15px]`}>
+          <p className={`${beVietnamPro.className} text-[#FFFEFB] text-[12px] md:text-[15px]`}>
             * Campo obligatorio
           </p>
         </div>
