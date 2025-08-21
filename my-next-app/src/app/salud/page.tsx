@@ -68,7 +68,7 @@ function ServerHealth() {
   // Loading state UI
   if (loading) {
     return (
-      <div className={`${beVietnamPro.className} text-[25px] text-[#FFFEFB] text-center`}>
+      <div className={`${beVietnamPro.className} text-[16px] md:text-[25px] text-[#FFFEFB] text-center`}>
         Revisando salud del servidor...
       </div>
     );
@@ -77,7 +77,7 @@ function ServerHealth() {
   // Error state UI
   if (error) {
     return (
-      <div className={`${beVietnamPro.className} text-[25px] text-[#FFFEFB] text-center`}>
+      <div className={`${beVietnamPro.className} text-[16px] md:text-[25px] text-[#FFFEFB] text-center`}>
         {error}
       </div>
     );
@@ -86,7 +86,7 @@ function ServerHealth() {
   // No data state UI
   if (!healthData) {
     return (
-      <div className={`${beVietnamPro.className} text-[25px] text-[#FFFEFB] text-center`}>
+      <div className={`${beVietnamPro.className} text-[16px] md:text-[25px] text-[#FFFEFB] text-center`}>
         No se pudo obtener información del servidor
       </div>
     );
@@ -94,11 +94,11 @@ function ServerHealth() {
 
   // Success state - display health data
   return (
-    <div className="space-y-6">
-      <div className={`${beVietnamPro.className} text-[35px] text-[#FFFEFB] text-center font-bold`}>
+    <div className="space-y-3 md:space-y-6">
+      <div className={`${beVietnamPro.className} text-[20px] md:text-[35px] text-[#FFFEFB] text-center font-bold`}>
         HTTP Status: {httpStatus}
       </div>
-      <div className={`${beVietnamPro.className} text-[35px] text-[#FFFEFB] text-center font-bold`}>
+      <div className={`${beVietnamPro.className} text-[20px] md:text-[35px] text-[#FFFEFB] text-center font-bold`}>
         {healthData.message}
       </div>
     </div>
@@ -108,10 +108,11 @@ function ServerHealth() {
 // Main page component for system health monitoring
 export default function SaludPage() {
   return (
-    <div className="min-h-[1100px] flex flex-col">
+    // Main page container with minimum height - fixed for mobile gap
+    <div className="min-h-screen md:min-h-[1100px] flex flex-col">
       {/* Navigation component */}
       <NavBar />
-      {/* Main content area with background image */}
+      {/* Main content area with flex-grow */}
       <main className="flex-1 relative">
         {/* Background image */}
         <Image
@@ -122,13 +123,13 @@ export default function SaludPage() {
           priority
         />
         {/* Content overlay with page title and health component */}
-        <div className="text-center relative px-6 pt-[90px] pb-[50px]">
+        <div className="text-center relative px-4 md:px-6 pt-[50px] md:pt-[90px] pb-[30px] md:pb-[50px]">
           {/* Page title */}
-          <h1 className={`${anton.className} text-[55px] text-[#FFFEFB] tracking-[4px] mb-[-35px]`}>
+          <h1 className={`${anton.className} text-[28px] md:text-[55px] text-[#FFFEFB] tracking-[2px] md:tracking-[4px] mb-[-18px] md:mb-[-35px]`}>
             Salud del Sistema
           </h1>
           {/* Page subtitle */}
-          <p className={`${anton.className} text-[20px] text-[#FFFEFB] mb-[50px]`}>
+          <p className={`${anton.className} text-[12px] md:text-[20px] text-[#FFFEFB] mb-[30px] md:mb-[50px]`}>
             Monitoreo de la salud del sistema
           </p>
           {/* Server health monitoring component */}

@@ -44,12 +44,12 @@ export default function UserListPage() {
     fetchUsers();
   }, []);
   return (
-    // Main page container with minimum height and flex layout
-    <div className="min-h-[1100px] flex flex-col">
+    // Main page container with minimum height and flex layout - fixed for mobile gap
+    <div className="min-h-screen md:min-h-[1100px] flex flex-col">
       {/* Navigation bar component */}
       <NavBar />
-      {/* Main content area with background */}
-      <div className="relative min-h-[100px] flex-1">
+      {/* Main content area with background - flex-grow added */}
+      <div className="relative min-h-[80px] md:min-h-[100px] flex-1">
         {/* Background image */}
         <Image
           src="/backdrop.png"
@@ -59,16 +59,16 @@ export default function UserListPage() {
           priority
         />
           {/* Main content overlay with scrollable container */}
-          <main className="relative z-10 flex flex-col items-center px-[24px] pt-[100px] max-h-[1100px] overflow-y-auto">
+          <main className="relative z-10 flex flex-col items-center px-[16px] md:px-[24px] pt-[50px] md:pt-[100px] max-h-[700px] md:max-h-[1100px] overflow-y-auto">
           {/* Page title */}
           <h1
-            className={`${anton.className} text-[50px] text-[#FFFEFB] tracking-[4px] mb-[-20px]`}
+            className={`${anton.className} text-[24px] md:text-[50px] text-[#FFFEFB] tracking-[2px] md:tracking-[4px] mb-[-10px] md:mb-[-20px]`}
           >
             Lista de Usuarios
           </h1>
           {/* Loading state indicator */}
           {loading && (
-            <div className={`${anton.className} text-[#FFFEFB text-[20px] mt-[20px] mb-[-20px]`}>
+            <div className={`${anton.className} text-[#FFFEFB] text-[14px] md:text-[20px] mt-[12px] md:mt-[20px] mb-[-12px] md:mb-[-20px]`}>
               Cargando usuarios...
             </div>
           )}
